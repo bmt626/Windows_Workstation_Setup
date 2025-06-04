@@ -1,31 +1,32 @@
-choco install googlechrome --ignore-checksums -y
-choco install firefox -y
-choco install 7zip.install -y
-choco install git.install -y
-choco install vlc -y
-choco install sysinternals --ignore-checksums -y 
-choco install vscode -y
-choco install wireshark -y 
-choco install winscp.install -y
 choco install office365proplus -y
-choco install cutter -y
 choco install ghidra -y
-choco install die -y
-choco install ilspy -y
-choco install visualstudio2022community -y
 choco install dependencywalker -y
 choco install ollydbg -y
 choco install cheatengine -y
 choco install processhacker -y
-choco install dnspy -y
 choco install regshot -y
 choco install dotpeek -y
-choco install postman -y
 choco install jadx -y
-choco install python310 -y
-choco install temurin -y
-choco install putty.install -y 
-choco install telegram -y
+
+winget install Google.Chrome --accept-source-agreements --accept-package-agreements
+winget install Mozilla.Firefox --accept-source-agreements --accept-package-agreements
+winget install 7zip.7zip --accept-source-agreements --accept-package-agreements
+winget install Git.Git --accept-source-agreements --accept-package-agreements
+winget install VideoLAN.VLC --accept-source-agreements --accept-package-agreements
+winget install Microsoft.Sysinternals --accept-source-agreements --accept-package-agreements
+winget install Microsoft.VisualStudioCode --accept-source-agreements --accept-package-agreements
+winget install WiresharkFoundation.Wireshark --accept-source-agreements --accept-package-agreements
+winget install WinSCP.WinSCP --accept-source-agreements --accept-package-agreements
+winget install Rizin.Cutter --accept-source-agreements --accept-package-agreements
+winget install horsicq.DIE-engine --accept-source-agreements --accept-package-agreements
+winget install icsharpcode.ILSpy --accept-source-agreements --accept-package-agreements
+winget install Microsoft.VisualStudio.2022.Community --accept-source-agreements --accept-package-agreements
+winget install dnSpyEx.dnSpy --accept-source-agreements --accept-package-agreements
+winget install Postman.Postman --accept-source-agreements --accept-package-agreements
+winget install EclipseAdoptium.Temurin.21.JDK --accept-source-agreements --accept-package-agreements
+winget install PuTTY.PuTTY --accept-source-agreements --accept-package-agreements
+winget install Telegram.TelegramDesktop --accept-source-agreements --accept-package-agreements
+winget install Python.Python.3.10 --accept-source-agreements --accept-package-agreements
 
 Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowFileExtensions
 
@@ -125,10 +126,10 @@ if (-not (Test-Path $iconDir))
 Invoke-WebRequest -Uri "https://github.com/skylot/jadx/raw/refs/heads/master/jadx-gui/src/main/resources/logos/jadx-logo.ico" -OutFile (Join-Path $iconDir "jadx-logo.ico")
 
 # Add dnSpy to desktop
-$WScriptShell = New-Object -ComObject WScript.Shell
-$shortcut = $WScriptShell.CreateShortcut("$([Environment]::GetFolderPath("Desktop"))\dnSpy.lnk")
-$shortcut.TargetPath = "C:\ProgramData\chocolatey\lib\dnspy\tools\dnSpy.exe"
-$shortcut.Save()
+# $WScriptShell = New-Object -ComObject WScript.Shell
+# $shortcut = $WScriptShell.CreateShortcut("$([Environment]::GetFolderPath("Desktop"))\dnSpy.lnk")
+# $shortcut.TargetPath = "C:\ProgramData\chocolatey\lib\dnspy\tools\dnSpy.exe"
+# $shortcut.Save()
 
 # Add procmon64 to desktop
 $WScriptShell = New-Object -ComObject WScript.Shell
@@ -155,10 +156,10 @@ $shortcut.TargetPath = "C:\ProgramData\chocolatey\lib\dependencywalker\content\d
 $shortcut.Save()
 
 # Add ilspy to desktop
-$WScriptShell = New-Object -ComObject WScript.Shell
-$shortcut = $WScriptShell.CreateShortcut("$([Environment]::GetFolderPath("Desktop"))\ILSpy.lnk")
-$shortcut.TargetPath = "C:\ProgramData\chocolatey\lib\ilspy\tools\ILSpy.exe"
-$shortcut.Save()
+# $WScriptShell = New-Object -ComObject WScript.Shell
+# $shortcut = $WScriptShell.CreateShortcut("$([Environment]::GetFolderPath("Desktop"))\ILSpy.lnk")
+# $shortcut.TargetPath = "C:\ProgramData\chocolatey\lib\ilspy\tools\ILSpy.exe"
+# $shortcut.Save()
 
 # Add ghidra to desktop with icon
 $WScriptShell = New-Object -ComObject WScript.Shell
@@ -174,6 +175,12 @@ $shortcut.IconLocation = "C:\\Tools\\Icons\\jadx-logo.ico,0"
 $shortcut.TargetPath = "C:\ProgramData\chocolatey\lib\jadx\tools\bin\jadx-gui.bat"
 $shortcut.Save()
 
+# Add Detect It Easy to desktop
+$WScriptShell = New-Object -ComObject WScript.Shell
+$shortcut = $WScriptShell.CreateShortcut("$([Environment]::GetFolderPath("Desktop"))\die.lnk")
+$shortcut.IconLocation = "$env:LOCALAPPDATA\Microsoft\WinGet\Links\die.exe"
+$shortcut.TargetPath = "$env:LOCALAPPDATA\Microsoft\WinGet\Links\die.exe"
+$shortcut.Save() # TODO: not pulling icon need to fix
 
 # Create Powershell profile for user if it doesnt exist
     if (!(Test-Path -Path $PROFILE)) {
