@@ -27,6 +27,7 @@ winget install EclipseAdoptium.Temurin.21.JDK --accept-source-agreements --accep
 winget install PuTTY.PuTTY --accept-source-agreements --accept-package-agreements
 winget install Telegram.TelegramDesktop --accept-source-agreements --accept-package-agreements
 winget install Python.Python.3.10 --accept-source-agreements --accept-package-agreements
+winget install Microsoft.PowerToys --accept-source-agreements --accept-package-agreements
 
 Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowFileExtensions
 
@@ -134,13 +135,13 @@ Invoke-WebRequest -Uri "https://github.com/skylot/jadx/raw/refs/heads/master/jad
 # Add procmon64 to desktop
 $WScriptShell = New-Object -ComObject WScript.Shell
 $shortcut = $WScriptShell.CreateShortcut("$([Environment]::GetFolderPath("Desktop"))\Procmon64.lnk")
-$shortcut.TargetPath = "C:\ProgramData\chocolatey\lib\sysinternals\tools\Procmon64.exe"
+$shortcut.TargetPath = "$env:LOCALAPPDATA\Microsoft\WinGet\Packages\Microsoft.Sysinternals_Microsoft.Winget.Source_8wekyb3d8bbwe\Procmon64.exe"
 $shortcut.Save()
 
 # Add procmon to desktop
 $WScriptShell = New-Object -ComObject WScript.Shell
 $shortcut = $WScriptShell.CreateShortcut("$([Environment]::GetFolderPath("Desktop"))\Procmon.lnk")
-$shortcut.TargetPath = "C:\ProgramData\chocolatey\lib\sysinternals\tools\Procmon.exe"
+$shortcut.TargetPath = "$env:LOCALAPPDATA\Microsoft\WinGet\Packages\Microsoft.Sysinternals_Microsoft.Winget.Source_8wekyb3d8bbwe\Procmon.exe"
 $shortcut.Save()
 
 # Add ollydbg to desktop
@@ -178,9 +179,26 @@ $shortcut.Save()
 # Add Detect It Easy to desktop
 $WScriptShell = New-Object -ComObject WScript.Shell
 $shortcut = $WScriptShell.CreateShortcut("$([Environment]::GetFolderPath("Desktop"))\die.lnk")
-$shortcut.IconLocation = "$env:LOCALAPPDATA\Microsoft\WinGet\Links\die.exe"
-$shortcut.TargetPath = "$env:LOCALAPPDATA\Microsoft\WinGet\Links\die.exe"
-$shortcut.Save() # TODO: not pulling icon need to fix
+$shortcut.TargetPath = "$env:LOCALAPPDATA\Microsoft\WinGet\Packages\horsicq.DIE-engine_Microsoft.Winget.Source_8wekyb3d8bbwe\die.exe"
+$shortcut.Save()
+
+# Add Cutter to desktop
+$WScriptShell = New-Object -ComObject WScript.Shell
+$shortcut = $WScriptShell.CreateShortcut("$([Environment]::GetFolderPath("Desktop"))\Cutter.lnk")
+$shortcut.TargetPath = "$env:LOCALAPPDATA\Microsoft\WinGet\Links\cutter.exe"
+$shortcut.Save()
+
+# Add ILSpy to desktop
+$WScriptShell = New-Object -ComObject WScript.Shell
+$shortcut = $WScriptShell.CreateShortcut("$([Environment]::GetFolderPath("Desktop"))\ILSpy.lnk")
+$shortcut.TargetPath = "$env:LOCALAPPDATA\Programs\ILSpy\ilspy.exe"
+$shortcut.Save()
+
+# Add dnSpy to desktop
+$WScriptShell = New-Object -ComObject WScript.Shell
+$shortcut = $WScriptShell.CreateShortcut("$([Environment]::GetFolderPath("Desktop"))\dnSpy.lnk")
+$shortcut.TargetPath = "$env:LOCALAPPDATA\Microsoft\WinGet\Packages\dnSpyEx.dnSpy_Microsoft.Winget.Source_8wekyb3d8bbwe\dnSpy.exe"
+$shortcut.Save()
 
 # Create Powershell profile for user if it doesnt exist
     if (!(Test-Path -Path $PROFILE)) {
