@@ -70,7 +70,7 @@ Write-Host "[+] Reloading powershell profile..."
 
 # Define the Boxstarter package gist URL and output file path of users desktop and the script filename
 Write-Host "[+] Downloading Boxstarter Package..." -ForegroundColor Cyan
-$url = "https://gist.github.com/bmt626/754c8354f423536fa08c74c8b56e860a/raw/86ad0da3fe08d201f9dfd090fd1ed61e6d2a9aa9/win11vm_boxstarter.ps1"
+$url = "https://raw.githubusercontent.com/bmt626/Windows_Workstation_Setup/refs/heads/main/win11vm_boxstarter.ps1"
 $desktop = [Environment]::GetFolderPath("Desktop")
 $outputPath = Join-Path $desktop "win11vm_boxstarter.ps1"
 
